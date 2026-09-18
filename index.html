@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ikram Ennajmi — Full-Stack Developer | Data & AI</title>
+<meta name="description" content="Portfolio of Ikram Ennajmi, Full-Stack Developer specialized in Laravel, Vue.js and AI/Data Science, based in Fez, Morocco.">
+<meta name="theme-color" content="#0f172a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f6f7fb;
+    --bg-alt: #ffffff;
+    --surface: #ffffff;
+    --surface-border: #e6e8f0;
+    --text: #14161f;
+    --text-dim: #565b6e;
+    --accent: #4f46e5;
+    --accent-2: #14b8a6;
+    --accent-soft: #eef0fe;
+    --code: #0f172a;
+    --shadow: 0 10px 30px -12px rgba(20,22,31,0.15);
+    --radius: 16px;
+    --maxw: 1120px;
+    --font-head: 'Sora', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #0b0d14;
+      --bg-alt: #10131c;
+      --surface: #12151f;
+      --surface-border: #232838;
+      --text: #eef0f8;
+      --text-dim: #a4a9c1;
+      --accent: #818cf8;
+      --accent-2: #2dd4bf;
+      --accent-soft: #1b1f30;
+      --code: #e2e8f0;
+      --shadow: 0 10px 30px -12px rgba(0,0,0,0.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #0b0d14;
+    --bg-alt: #10131c;
+    --surface: #12151f;
+    --surface-border: #232838;
+    --text: #eef0f8;
+    --text-dim: #a4a9c1;
+    --accent: #818cf8;
+    --accent-2: #2dd4bf;
+    --accent-soft: #1b1f30;
+    --code: #e2e8f0;
+    --shadow: 0 10px 30px -12px rgba(0,0,0,0.5);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    transition:background .25s ease, color .25s ease;
+  }
+  img,svg{max-width:100%; display:block;}
+  a{color:var(--accent);}
+  h1,h2,h3,h4{font-family:var(--font-head); line-height:1.15; margin:0 0 .5em;}
+  section{padding:88px 24px;}
+  .wrap{max-width:var(--maxw); margin:0 auto;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent); font-weight:600; margin-bottom:14px;
+  }
+  .eyebrow::before{content:""; width:22px; height:2px; background:var(--accent); border-radius:2px;}
+
+  /* Skip link */
+  .skip-link{
+    position:absolute; left:-999px; top:auto;
+    background:var(--accent); color:#fff; padding:10px 16px; border-radius:8px; z-index:200;
+  }
+  .skip-link:focus{ left:16px; top:16px; }
+
+  /* Nav */
+  header.site-header{
+    position:sticky; top:0; z-index:100;
+    backdrop-filter:saturate(160%) blur(14px);
+    background:color-mix(in srgb, var(--bg) 78%, transparent);
+    border-bottom:1px solid var(--surface-border);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px; max-width:var(--maxw); margin:0 auto;
+  }
+  .brand{
+    font-family:var(--font-head); font-weight:800; font-size:1.05rem; letter-spacing:-.01em;
+    display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text);
+  }
+  .brand .dot{width:9px; height:9px; border-radius:50%; background:var(--accent-2);}
+  .nav-links{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
+  .nav-links a{
+    text-decoration:none; color:var(--text-dim); font-size:.92rem; font-weight:500;
+    transition:color .2s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{color:var(--text);}
+  .nav-right{display:flex; align-items:center; gap:14px;}
+  .theme-toggle{
+    border:1px solid var(--surface-border); background:var(--surface); color:var(--text);
+    width:38px; height:38px; border-radius:10px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; font-size:1rem;
+  }
+  .theme-toggle:hover{border-color:var(--accent);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; border-radius:11px; font-weight:600; font-size:.92rem;
+    text-decoration:none; cursor:pointer; border:1px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease, background .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--accent); color:#fff; box-shadow:0 8px 20px -8px color-mix(in srgb, var(--accent) 70%, transparent);}
+  .btn-ghost{background:transparent; border-color:var(--surface-border); color:var(--text);}
+  .nav-cta{display:none;}
+  @media (min-width:760px){ .nav-cta{display:inline-flex;} }
+  .mobile-toggle{display:none; background:none; border:1px solid var(--surface-border); color:var(--text); border-radius:10px; width:38px; height:38px; cursor:pointer;}
+  @media (max-width:759px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0; flex-direction:column; gap:0;
+      background:var(--bg-alt); border-bottom:1px solid var(--surface-border);
+      max-height:0; overflow:hidden; transition:max-height .3s ease;
+    }
+    .nav-links.open{max-height:320px;}
+    .nav-links li{border-top:1px solid var(--surface-border);}
+    .nav-links a{display:block; padding:14px 24px;}
+    .mobile-toggle{display:flex; align-items:center; justify-content:center;}
+  }
+
+  /* Hero */
+  .hero{
+    padding:96px 24px 60px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before{
+    content:""; position:absolute; inset:-20% -10% auto -10%; height:520px;
+    background:
+      radial-gradient(560px 280px at 15% 20%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 70%),
+      radial-gradient(520px 260px at 85% 10%, color-mix(in srgb, var(--accent-2) 22%, transparent), transparent 70%);
+    filter:blur(10px); z-index:-1;
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.2fr .8fr; gap:48px; align-items:center;
+  }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero h1{font-size:clamp(2.2rem, 5vw, 3.4rem); font-weight:800; letter-spacing:-.02em;}
+  .hero .role{color:var(--accent); font-weight:700; font-family:var(--font-head);}
+  .hero p.tagline{font-size:1.15rem; color:var(--text-dim); max-width:52ch; margin:18px 0 30px;}
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap;}
+  .hero-meta{display:flex; gap:22px; margin-top:36px; flex-wrap:wrap;}
+  .hero-meta div{display:flex; flex-direction:column;}
+  .hero-meta strong{font-family:var(--font-head); font-size:1.35rem;}
+  .hero-meta span{color:var(--text-dim); font-size:.82rem;}
+
+  .avatar-card{
+    background:var(--surface); border:1px solid var(--surface-border); border-radius:22px;
+    padding:28px; box-shadow:var(--shadow); text-align:center; position:relative;
+  }
+  .avatar{
+    width:132px; height:132px; margin:0 auto 18px; border-radius:50%;
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-head); font-weight:800; font-size:2.6rem; color:#fff;
+  }
+  .avatar-card h3{margin-bottom:2px;}
+  .avatar-card p{color:var(--text-dim); margin:0 0 16px; font-size:.9rem;}
+  .badge-row{display:flex; flex-wrap:wrap; gap:8px; justify-content:center;}
+  .badge{
+    font-size:.75rem; font-weight:600; padding:5px 11px; border-radius:999px;
+    background:var(--accent-soft); color:var(--accent);
+  }
+
+  /* Section heading */
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head h2{font-size:clamp(1.6rem,3vw,2.1rem);}
+  .section-head p{color:var(--text-dim); margin:0;}
+
+  /* About */
+  .about-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:40px;}
+  @media (max-width:800px){ .about-grid{grid-template-columns:1fr;} }
+  .about-grid p{color:var(--text-dim); margin:0 0 16px;}
+  .fact-list{list-style:none; margin:0; padding:0; display:grid; gap:14px;}
+  .fact-list li{
+    background:var(--surface); border:1px solid var(--surface-border); border-radius:12px;
+    padding:14px 16px; font-size:.9rem; display:flex; gap:10px; align-items:flex-start;
+  }
+  .fact-list li .ico{color:var(--accent-2); font-weight:700;}
+
+  /* Skills */
+  .skills-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:22px;}
+  .skill-card{
+    background:var(--surface); border:1px solid var(--surface-border); border-radius:var(--radius);
+    padding:24px;
+  }
+  .skill-card h3{font-size:1rem; display:flex; align-items:center; gap:8px;}
+  .skill-card h3 .ico{font-size:1.1rem;}
+  .skill-item{margin-top:14px;}
+  .skill-item .label{display:flex; justify-content:space-between; font-size:.85rem; margin-bottom:6px; color:var(--text-dim);}
+  .bar{height:7px; border-radius:99px; background:var(--surface-border); overflow:hidden;}
+  .bar span{display:block; height:100%; border-radius:99px; background:linear-gradient(90deg, var(--accent), var(--accent-2));}
+
+  /* Timeline */
+  .timeline{position:relative; padding-left:28px; border-left:2px solid var(--surface-border);}
+  .tl-item{position:relative; padding-bottom:40px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:""; position:absolute; left:-34px; top:4px; width:12px; height:12px; border-radius:50%;
+    background:var(--accent); box-shadow:0 0 0 4px var(--accent-soft);
+  }
+  .tl-card{
+    background:var(--surface); border:1px solid var(--surface-border); border-radius:var(--radius);
+    padding:22px 24px;
+  }
+  .tl-top{display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; margin-bottom:6px;}
+  .tl-top h3{margin:0; font-size:1.1rem;}
+  .tl-date{font-size:.8rem; font-weight:600; color:var(--accent); background:var(--accent-soft); padding:4px 10px; border-radius:999px; white-space:nowrap;}
+  .tl-company{color:var(--text-dim); font-size:.9rem; margin-bottom:12px;}
+  .tl-card ul{margin:0; padding-left:18px; color:var(--text-dim); font-size:.92rem; display:grid; gap:6px;}
+
+  /* Projects */
+  .projects-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:24px;}
+  .project-card{
+    background:var(--surface); border:1px solid var(--surface-border); border-radius:var(--radius);
+    overflow:hidden; display:flex; flex-direction:column;
+  }
+  .project-cover{
+    height:120px; background:linear-gradient(135deg, var(--accent-soft), transparent),
+      repeating-linear-gradient(45deg, color-mix(in srgb, var(--accent) 12%, transparent) 0 2px, transparent 2px 14px);
+    display:flex; align-items:center; justify-content:center; font-size:2.2rem;
+  }
+  .project-body{padding:22px 24px; display:flex; flex-direction:column; gap:12px; flex:1;}
+  .project-body h3{font-size:1.08rem; margin:0;}
+  .stack-row{display:flex; flex-wrap:wrap; gap:6px;}
+  .tag{font-size:.72rem; font-weight:600; background:var(--accent-soft); color:var(--accent); padding:4px 9px; border-radius:999px;}
+  .project-body p{margin:0; color:var(--text-dim); font-size:.9rem;}
+  .impact{
+    font-size:.85rem; font-weight:600; color:var(--accent-2);
+    border-top:1px dashed var(--surface-border); padding-top:10px; margin-top:auto;
+  }
+  .project-links{display:flex; gap:14px; font-size:.85rem; font-weight:600;}
+
+  /* Education */
+  .edu-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:22px;}
+  .edu-card{
+    background:var(--surface); border:1px solid var(--surface-border); border-radius:var(--radius);
+    padding:24px; display:flex; gap:16px;
+  }
+  .edu-ico{
+    width:44px; height:44px; border-radius:12px; background:var(--accent-soft); color:var(--accent);
+    display:flex; align-items:center; justify-content:center; font-size:1.3rem; flex-shrink:0;
+  }
+  .edu-card h3{font-size:1rem; margin-bottom:2px;}
+  .edu-card .meta{font-size:.8rem; color:var(--accent); font-weight:600; margin-bottom:8px;}
+  .edu-card p{margin:0; color:var(--text-dim); font-size:.88rem;}
+
+  /* Languages / interests */
+  .chip-row{display:flex; flex-wrap:wrap; gap:10px;}
+  .chip{
+    background:var(--surface); border:1px solid var(--surface-border); padding:9px 16px; border-radius:999px;
+    font-size:.85rem; font-weight:600; display:flex; gap:8px; align-items:center;
+  }
+  .chip span.dim{color:var(--text-dim); font-weight:400;}
+
+  /* Contact */
+  .contact-wrap{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px;
+    background:var(--surface); border:1px solid var(--surface-border); border-radius:24px;
+    padding:44px; box-shadow:var(--shadow);
+  }
+  @media (max-width:800px){ .contact-wrap{grid-template-columns:1fr; padding:28px;} }
+  .contact-info h2{font-size:1.6rem;}
+  .contact-info p{color:var(--text-dim);}
+  .contact-list{list-style:none; margin:26px 0 0; padding:0; display:grid; gap:14px;}
+  .contact-list a{
+    display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text);
+    font-size:.95rem; font-weight:500;
+  }
+  .contact-list .ico{
+    width:38px; height:38px; border-radius:10px; background:var(--accent-soft); color:var(--accent);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  form.contact-form{display:grid; gap:14px;}
+  .form-row{display:grid; gap:6px;}
+  .form-row label{font-size:.82rem; font-weight:600; color:var(--text-dim);}
+  .form-row input, .form-row textarea{
+    background:var(--bg); border:1px solid var(--surface-border); border-radius:10px;
+    padding:12px 14px; font-family:var(--font-body); font-size:.92rem; color:var(--text);
+  }
+  .form-row input:focus, .form-row textarea:focus{outline:2px solid var(--accent); outline-offset:1px;}
+  .form-note{font-size:.78rem; color:var(--text-dim);}
+
+  footer{
+    padding:32px 24px; text-align:center; color:var(--text-dim); font-size:.85rem;
+    border-top:1px solid var(--surface-border);
+  }
+  footer a{color:var(--text-dim); text-decoration:underline;}
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none; transition:none;}
+    .btn:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="wrap" aria-label="Main navigation">
+    <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span> Ikram Ennajmi</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">🌙</button>
+      <a class="btn btn-primary nav-cta" href="#contact">Let's talk</a>
+      <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Full-Stack Developer · Data &amp; AI</p>
+        <h1>Ikram Ennajmi builds <span class="role">reliable web products</span> with a mathematician's mind.</h1>
+        <p class="tagline">I turn rigorous problem-solving into clean Laravel &amp; Vue.js applications — and bring the same discipline to data and AI experiments.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#projects">View my work</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+        <div class="hero-meta">
+          <div><strong>SMI</strong><span>Math &amp; CS Degree, FSDM Fez</span></div>
+          <div><strong>Laravel · Vue.js</strong><span>Core stack</span></div>
+          <div><strong>Fez, MA</strong><span>Open to remote / on-site</span></div>
+        </div>
+      </div>
+      <div class="avatar-card reveal">
+        <div class="avatar" aria-hidden="true">IE</div>
+        <h3>Ikram Ennajmi</h3>
+        <p>Full-Stack Developer | Data &amp; AI</p>
+        <div class="badge-row">
+          <span class="badge">Laravel</span>
+          <span class="badge">Vue.js</span>
+          <span class="badge">Python</span>
+          <span class="badge">Deep RL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">About</p>
+        <h2>Where mathematics meets shipped code</h2>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p>I graduated in Mathematics and Computer Science from the Faculty of Sciences Dhar El Mahraz in Fez, then sharpened that theory into practice through Ark‑X Academy's intensive Full‑Stack bootcamp. That combination is my edge: I don't just write code that works, I reason about why it works — from database modeling to API security to the trade‑offs behind a UI decision.</p>
+          <p>Day to day, I build complete web applications with Laravel on the backend and Vue.js on the frontend, secured with JWT authentication and proper role management. On the side, I explore Data Science and AI with Python — including reinforcement‑learning experiments — because I like understanding systems all the way down, not just the parts that ship a feature.</p>
+          <p>I'm autonomous, comfortable picking up new tools fast, and currently looking for my first full‑time role where I can grow alongside a technical team.</p>
+        </div>
+        <ul class="fact-list">
+          <li><span class="ico">✓</span> Full‑stack: Laravel (API/backend) + Vue.js (frontend)</li>
+          <li><span class="ico">✓</span> Security‑minded: JWT auth, role‑based access control</li>
+          <li><span class="ico">✓</span> Data &amp; AI curious: Python, TensorFlow, Deep RL</li>
+          <li><span class="ico">✓</span> Trilingual: Arabic (native), French (fluent), English (technical)</li>
+          <li><span class="ico">✓</span> Based in Fez, Morocco — open to remote work</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" style="background:var(--bg-alt);">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Skills</p>
+        <h2>Technical toolkit</h2>
+        <p>Grouped by area, with an honest sense of where I'm strongest today.</p>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-card reveal">
+          <h3><span class="ico">💻</span> Languages</h3>
+          <div class="skill-item"><div class="label"><span>PHP</span><span>Advanced</span></div><div class="bar"><span style="width:85%"></span></div></div>
+          <div class="skill-item"><div class="label"><span>JavaScript / TypeScript</span><span>Advanced</span></div><div class="bar"><span style="width:82%"></span></div></div>
+          <div class="skill-item"><div class="label"><span>Python</span><span>Advanced</span></div><div class="bar"><span style="width:80%"></span></div></div>
+          <div class="skill-item"><div class="label"><span>SQL</span><span>Advanced</span></div><div class="bar"><span style="width:80%"></span></div></div>
+          <div class="skill-item"><div class="label"><span>Java / C++</span><span>Intermediate</span></div><div class="bar"><span style="width:60%"></span></div></div>
+        </div>
+
+        <div class="skill-card reveal">
+          <h3><span class="ico">🧩</span> Frameworks</h3>
+          <div class="skill-item"><div class="label"><span>Laravel</span><span>Advanced</span></div><div class="bar"><span style="width:85%"></span></div></div>
+          <div class="skill-item"><div class="label"><span>Vue.js</span><span>Advanced</span></div><div class="bar"><span style="width:82%"></span></div></div>
+          <div class="skill-item"><div class="label"><span>Tailwind CSS</span><span>Advanced</span></div><div class="bar"><span style="width:80%"></span></div></div>
+          <div class="skill-item"><div class="label"><span>TensorFlow (Deep RL)</span><span>Intermediate</span></div><div class="bar"><span style="width:60%"></span></div></div>
+        </div>
+
+        <div class="skill-card reveal">
+          <h3><span class="ico">🗄️</span> Databases</h3>
+          <div class="skill-item"><div class="label"><span>MySQL</span><span>Advanced</span></div><div class="bar"><span style="width:82%"></span></div></div>
+          <div class="skill-item"><div class="label"><span>PostgreSQL</span><span>Intermediate</span></div><div class="bar"><span style="width:68%"></span></div></div>
+          <div class="skill-item"><div class="label"><span>SQLite / Modeling (UML)</span><span>Advanced</span></div><div class="bar"><span style="width:78%"></span></div></div>
+        </div>
+
+        <div class="skill-card reveal">
+          <h3><span class="ico">🛠️</span> Tools &amp; DevOps</h3>
+          <div class="skill-item"><div class="label"><span>Git / GitHub</span><span>Advanced</span></div><div class="bar"><span style="width:85%"></span></div></div>
+          <div class="skill-item"><div class="label"><span>Postman</span><span>Advanced</span></div><div class="bar"><span style="width:80%"></span></div></div>
+          <div class="skill-item"><div class="label"><span>Linux (Fedora, Kali)</span><span>Intermediate</span></div><div class="bar"><span style="width:65%"></span></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Experience</p>
+        <h2>Where I've applied it</h2>
+      </div>
+      <div class="timeline">
+
+        <div class="tl-item reveal">
+          <div class="tl-card">
+            <div class="tl-top">
+              <h3>Full-Stack Developer</h3>
+              <span class="tl-date">10/2025 – 01/2026</span>
+            </div>
+            <div class="tl-company">Ark-X Academy / JobInTech · Fez, Morocco</div>
+            <ul>
+              <li>Designed and built complete web applications end-to-end, owning both the Laravel backend and the Vue.js frontend.</li>
+              <li>Implemented secure REST APIs protected by JWT authentication, with structured role-based access control for different user types.</li>
+              <li>Worked in a collaborative, team-based development workflow using Git for version control.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-card">
+            <div class="tl-top">
+              <h3>Digital &amp; Web Management Intern</h3>
+              <span class="tl-date">08/2025 – 10/2025</span>
+            </div>
+            <div class="tl-company">Confidential Company · Fez, Morocco</div>
+            <ul>
+              <li>Maintained and updated WordPress websites, managing plugins and content to keep sites reliable and current.</li>
+              <li>Gained first hands-on exposure to production web environments and client-facing digital operations.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" style="background:var(--bg-alt);">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Projects</p>
+        <h2>Selected work</h2>
+        <p>Academic and self-driven projects where I turned an idea into a working system.</p>
+      </div>
+      <div class="projects-grid">
+
+        <article class="project-card reveal">
+          <div class="project-cover" aria-hidden="true">🛍️</div>
+          <div class="project-body">
+            <h3>Elegance_Shop</h3>
+            <div class="stack-row">
+              <span class="tag">Vue.js</span><span class="tag">UX/UI</span><span class="tag">Modeling</span>
+            </div>
+            <p><strong>Problem:</strong> Build a structured e-commerce web solution with a genuinely usable interface, not just a working backend.</p>
+            <p><strong>Approach:</strong> Modeled the data structure first, then implemented the frontend in Vue.js with a strong focus on the user experience and interface design.</p>
+            <p class="impact">Impact: a fully modeled, structured web solution centered on real usability.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-cover" aria-hidden="true">📈</div>
+          <div class="project-body">
+            <h3>Automated Trading Agent</h3>
+            <div class="stack-row">
+              <span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">Deep RL</span>
+            </div>
+            <p><strong>Problem:</strong> Explore whether a Deep Reinforcement Learning agent can learn effective stock trading behavior — a final-year AI project.</p>
+            <p><strong>Approach:</strong> Designed and trained a DRL-based agent to make trading decisions on market data, applying core AI and mathematical modeling concepts from my degree.</p>
+            <p class="impact">Impact: a working proof-of-concept connecting academic AI theory to a real financial use case.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-cover" aria-hidden="true">🌐</div>
+          <div class="project-body">
+            <h3>This Portfolio</h3>
+            <div class="stack-row">
+              <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Vanilla JS</span>
+            </div>
+            <p><strong>Problem:</strong> Present my profile clearly to recruiters without relying on a generic template.</p>
+            <p><strong>Approach:</strong> Hand-built with semantic HTML, accessible markup, and a light/dark theme — no frontend framework, no heavy dependencies.</p>
+            <p class="impact">Impact: fast-loading, accessible, single-file site you're looking at right now.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Education &amp; Training</p>
+        <h2>Foundations</h2>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-card reveal">
+          <div class="edu-ico" aria-hidden="true">🎓</div>
+          <div>
+            <h3>Bachelor's Degree — Mathematics &amp; Computer Science (SMI)</h3>
+            <div class="meta">Faculty of Sciences Dhar El Mahraz (FSDM) · Fez · 07/2026</div>
+            <p>Rigorous program combining analytical mathematics with software engineering: algorithms, data structures, and software design.</p>
+          </div>
+        </div>
+        <div class="edu-card reveal">
+          <div class="edu-ico" aria-hidden="true">🚀</div>
+          <div>
+            <h3>Intensive Full-Stack Developer Training — Diploma</h3>
+            <div class="meta">Ark-X Academy (JobInTech Program) · Fez · 2025 – 2026</div>
+            <p>Immersive, hands-on training building end-to-end web applications through collaborative, team-based work.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-head" style="margin-top:56px;">
+        <p class="eyebrow">Languages &amp; Interests</p>
+        <h2>Beyond the code</h2>
+      </div>
+      <div class="chip-row">
+        <span class="chip">🗣️ Arabic <span class="dim">— Native</span></span>
+        <span class="chip">🗣️ French <span class="dim">— Fluent</span></span>
+        <span class="chip">🗣️ English <span class="dim">— Technical</span></span>
+        <span class="chip">🎭 Theater &amp; Voice-over</span>
+        <span class="chip">📚 Reading — suspense novels</span>
+        <span class="chip">✨ New technologies</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="background:var(--bg-alt);">
+    <div class="wrap">
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <p class="eyebrow">Contact</p>
+          <h2>Let's build something together</h2>
+          <p>I'm currently looking for my first full-time role as a Full-Stack Developer. Feel free to reach out — I usually reply within a day or two.</p>
+          <ul class="contact-list">
+            <li><span class="ico" aria-hidden="true">✉️</span><a href="mailto:ennajmiikram123@gmail.com">ennajmiikram123@gmail.com</a></li>
+            <li><span class="ico" aria-hidden="true">📞</span><a href="tel:+212706116897">+212 706 116 897</a></li>
+            <li><span class="ico" aria-hidden="true">💼</span><a href="https://www.linkedin.com/in/ikram-ennajmi-1b2418203/" target="_blank" rel="noopener">linkedin.com/in/ikram-ennajmi</a></li>
+            <li><span class="ico" aria-hidden="true">🐙</span><a href="https://github.com/ikramenna" target="_blank" rel="noopener">github.com/ikramenna</a></li>
+            <li><span class="ico" aria-hidden="true">📍</span><span>Fez, Morocco</span></li>
+          </ul>
+        </div>
+        <form class="contact-form" id="contactForm" aria-label="Contact form">
+          <div class="form-row">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="form-row">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" required autocomplete="email">
+          </div>
+          <div class="form-row">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="4" required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Send message</button>
+          <p class="form-note">Opens your email client with this message pre-filled — no data is stored anywhere.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© <span id="year"></span> Ikram Ennajmi. Built by hand with HTML, CSS &amp; JavaScript. <a href="#top">Back to top ↑</a></p>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  // Year
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Theme toggle
+  var root = document.documentElement;
+  var toggle = document.getElementById('themeToggle');
+  function getStored(){
+    try { return window.localStorage.getItem('ie-theme'); } catch(e){ return null; }
+  }
+  function setStored(v){
+    try { window.localStorage.setItem('ie-theme', v); } catch(e){ /* ignore */ }
+  }
+  function applyIcon(){
+    var isDark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (toggle) toggle.textContent = isDark ? '☀️' : '🌙';
+  }
+  var stored = getStored();
+  if (stored === 'dark' || stored === 'light') root.setAttribute('data-theme', stored);
+  applyIcon();
+  if (toggle){
+    toggle.addEventListener('click', function(){
+      var current = root.getAttribute('data-theme');
+      var isDark = current === 'dark' || (!current && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      var next = isDark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      setStored(next);
+      applyIcon();
+    });
+  }
+
+  // Mobile nav
+  var mobileToggle = document.getElementById('mobileToggle');
+  var navLinks = document.getElementById('navLinks');
+  if (mobileToggle && navLinks){
+    mobileToggle.addEventListener('click', function(){
+      var open = navLinks.classList.toggle('open');
+      mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        navLinks.classList.remove('open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Reveal on scroll
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && reveals.length){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // Contact form -> mailto
+  var form = document.getElementById('contactForm');
+  if (form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = document.getElementById('cf-name').value.trim();
+      var email = document.getElementById('cf-email').value.trim();
+      var message = document.getElementById('cf-message').value.trim();
+      var subject = encodeURIComponent('Portfolio contact from ' + name);
+      var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+      window.location.href = 'mailto:ennajmiikram123@gmail.com?subject=' + subject + '&body=' + body;
+    });
+  }
+})();
+</script>
+</body>
+</html>
